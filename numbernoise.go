@@ -25,6 +25,7 @@ func RandomNSeconds(p, l time.Duration) <-chan int {
 				c.Stop()
 				w.Stop()
 				ok = false
+				return
 			}
 		}
 	}()
