@@ -14,8 +14,7 @@ func RandomNSeconds(p, l time.Duration) <-chan int {
 	nums := make(chan int)
 
 	go func() {
-		ok := true
-		for ok {
+		for {
 			select {
 			case tick := <-c.C:
 				num := int(int64(tick.UnixMilli())) * rand.Int()
@@ -24,7 +23,6 @@ func RandomNSeconds(p, l time.Duration) <-chan int {
 				close(nums)
 				c.Stop()
 				w.Stop()
-				ok = false
 				return
 			}
 		}
