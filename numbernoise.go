@@ -38,9 +38,9 @@ func EvenOdds(p, l time.Duration) (<-chan int, <-chan int) {
 	go func() {
 		nums := RandomNSeconds(p, l)
 		for {
-			rn, nok := <-nums
+			rn, ok := <-nums
 
-			if !nok {
+			if !ok {
 				close(evens)
 				close(odds)
 				return
